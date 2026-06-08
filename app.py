@@ -74,6 +74,39 @@ st.markdown("""
             color: #ff9900;
             font-weight: bold;
         }
+        @media (max-width: 768px) {
+            .block-container {
+                padding-left: 12px !important;
+                padding-right: 12px !important;
+                max-width: 100% !important;
+            }
+            .css-1ydfahe.e16nr0p30 {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .stButton>button,
+            button,
+            .stDownloadButton>button {
+                width: 100% !important;
+                min-width: 0 !important;
+            }
+            .stDataFrame, .stDataFrame > div {
+                overflow-x: auto !important;
+                width: 100% !important;
+            }
+            table {
+                width: 100% !important;
+                table-layout: auto !important;
+                word-break: break-word !important;
+            }
+            .element-container {
+                width: 100% !important;
+            }
+            .markdown-text-container {
+                padding-right: 0 !important;
+                padding-left: 0 !important;
+            }
+        }
     </style>
 """, unsafe_allow_html=True)
 
