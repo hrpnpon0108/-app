@@ -102,40 +102,22 @@ EXCHANGE_RATE_TTL = 300  # 5分
 # ===== 5. ファイル入出力ユーティリティ =====
 FAVORITES_PATH = os.path.join(os.path.dirname(__file__), 'favorites.json')
 
+# 5. ファイル入出力ユーティリティ
+# クラウド環境(GitHub)ではファイル保存ができないため、セッションのみで管理します
+
 def load_favorites():
-    try:
-        if os.path.exists(FAVORITES_PATH):
-            with open(FAVORITES_PATH, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                if isinstance(data, list):
-                    return data
-    except Exception:
-        pass
-    return []
+    if 'favorites' not in st.session_state:
+        st.session_state.favorites = []
+    return st.session_state.favorites
 
 def save_favorites(favorites):
-    try:
-        with open(FAVORITES_PATH, 'w', encoding='utf-8') as f:
-            json.dump(favorites, f, ensure_ascii=False, indent=2)
-    except Exception:
-        pass
+    # GitHub環境ではファイル書き込みは無視します
+    st.session_state.favorites = favorites
 
 def save_ticker_cache(path, tickers):
-    try:
-        with open(path, 'w', encoding='utf-8') as f:
-            json.dump(tickers, f, ensure_ascii=False, indent=2)
-    except Exception:
-        pass
+    pass 
 
 def load_ticker_cache(path):
-    try:
-        if os.path.exists(path):
-            with open(path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-                if isinstance(data, list):
-                    return data
-    except Exception:
-        pass
     return []
 
 def fetch_jp_ticker_list():
