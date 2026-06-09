@@ -1,3 +1,5 @@
-streamlit>=1.35.0
+streamlit
 yfinance
 pandas
+requests
+xlrd
